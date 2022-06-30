@@ -12,16 +12,21 @@ namespace v0630
 {
     public partial class Form1 : Form
     {
+        int vx = rand.Next(-10,11);
+        int vy = rand.Next(-10,11);
+        int point = 100;
+        static Random rand = new Random();
+
         public Form1()
         {
             InitializeComponent();
         }
 
-        int vx = -5;
-        int vy=-10;
-
         private void timer1_Tick(object sender, EventArgs e)
         {
+            point--;
+            label2.Text = "Score" + point;
+
             label1.Left += vx;
             label1.Top += vy;
 
@@ -45,11 +50,23 @@ namespace v0630
                 vy = -Math.Abs(vy);
             }
 
-            Point spos = MousePosition;
+            Point spos = label1.Location;
+            //Point spos = MousePosition;
             Point fpos = PointToClient(spos);
-            label2.Left = fpos.X - label2.Width / 2;
-            label2.Top = fpos.Y - label2.Height / 2; ;
-            
+            //label1.Left = fpos.X - label2.Width / 2;
+            //label1.Top = fpos.Y - label2.Height / 2; ;
+            label3.Text = $"{fpos.X},{fpos.Y}";
+
+            if ((fpos.X >= label1.Left)
+                && (fpos.X < label1.Right)
+                && (fpos.Y >= label1.Top)
+                 && (fpos.Y < label1.Bottom)) ;
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = false;
         }
     }
 }
