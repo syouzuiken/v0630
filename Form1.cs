@@ -82,7 +82,7 @@ namespace v0630
                 && (fpos.Y >= label1.Top)
                  && (fpos.Y < label1.Bottom)) ;
             {
-                timer1.Enabled = false;
+                //timer1.Enabled = false;
             }
 
             label3.Left += vx[1];
@@ -111,7 +111,7 @@ namespace v0630
                 && (fpos.Y < label3.Bottom)
                 )
             {
-                timer1.Enabled = false;
+                //timer1.Enabled = false;
             }
 
 
@@ -141,7 +141,7 @@ namespace v0630
                 && (fpos.Y < label4.Bottom)
                 )
             {
-                timer1.Enabled = false;
+                //timer1.Enabled = false;
             }
         }
 
