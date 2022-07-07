@@ -12,8 +12,9 @@ namespace v0630
 {
     public partial class Form1 : Form
     {
-        int []vx = new int[3];
-        int []vy = new int[3];
+        int []vx = new int[100];
+        int []vy = new int[100];
+        Label[] labels = new Label[100];
         //int vx = rand.Next(-10,11);
         //int vy = rand.Next(-10,11);
         //int point = 100;
@@ -23,12 +24,20 @@ namespace v0630
         {
             InitializeComponent();
 
-            vx[0] = rand.Next(-10, 11);
-            vy[0] = rand.Next(-10, 11);
-            vx[1] = rand.Next(-10, 11);
-            vy[1] = rand.Next(-10, 11);
-            vx[2] = rand.Next(-10, 11);
-            vy[2] = rand.Next(-10, 11);
+            for(int i=0;i<50;i++)
+            {
+                vx[i] = rand.Next(-10, 11);
+                vy[i] = rand.Next(-10, 11);
+
+                labels[i] = new Label();
+                labels[i].AutoSize = true;
+                labels[i].Text = "★";
+                Controls.Add(labels[i]);
+
+                labels[i].Left = rand.Next(ClientSize.Width - labels[i].Width);
+                labels[i].Top = rand.Next(ClientSize.Height - labels[i].Height);
+
+            }
 
             label1.Left = rand.Next(ClientSize.Width - label1.Width);
             label1.Top = rand.Next(ClientSize.Height - label1.Height);
@@ -82,7 +91,7 @@ namespace v0630
                 && (fpos.Y >= label1.Top)
                  && (fpos.Y < label1.Bottom)) ;
             {
-                //timer1.Enabled = false;
+                timer1.Enabled = false;
             }
 
             label3.Left += vx[1];
@@ -111,7 +120,7 @@ namespace v0630
                 && (fpos.Y < label3.Bottom)
                 )
             {
-                //timer1.Enabled = false;
+                timer1.Enabled = false;
             }
 
 
@@ -141,8 +150,9 @@ namespace v0630
                 && (fpos.Y < label4.Bottom)
                 )
             {
-                //timer1.Enabled = false;
+                timer1.Enabled = false;
             }
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
